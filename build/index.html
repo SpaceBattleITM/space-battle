@@ -57,6 +57,40 @@
                 <div class="ship-4">
                     <div class="ship" data-size="4"><img src="img/ship-4-1.svg" alt=""></div>
                 </div>
+                <!--todo Удалить временную кнопку -->
+                <button id="ships-ready"  style="position:relative;">Все корабли расставлены*</button>
+            </div>
+            <div class="ships-are-placed-container">
+                <div class="text-wrapper">
+                    <!--Если соперник не готов показываем-->
+                    <div class="rival-not-ready">
+                        <h2>Ваши корабли расставлены</h2>
+                        <div class="description">Но соперник ещё расставляет свои корабли.
+                        <br>Придётся немного подождать</div>
+                        <div class="waiting">
+                            <img src="img/ship-2-1.svg" alt="">
+                            <div class="circles">
+                                <div class="circle delay1"></div>
+                                <div class="circle delay2"></div>
+                                <div class="circle delay3"></div>
+                                <div class="circle delay4"></div>
+                            </div>
+                        </div>
+                        <!--todo Удалить временную кнопку-->
+                        <button id="player-ready" style="position:relative;">Противник готов</button>
+                    </div>
+                    <div class="rival-ready">
+                        <div class="timer"><h2>Бой начнется через: </h2>
+                            <div class="time-wrapper">
+                                <div class="circle delay1"></div>
+                                <div class="circle delay2"></div>
+                                <div class="circle delay3"></div>
+                                <div class="circle delay4"></div>
+                                <span class="timer-start-battle">10:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -21,12 +21,15 @@ $(function () {
     const toPlacementShips = function() {
         $('.start-screen').removeClass('active');
         $body.addClass('placementShips');
+        placementShipsScreen();
     };
 
     const init = function() {
         initGame = new initStartScreen();
 
         $body.on('click', '#game-link', copyLink);
+
+        //todo Временный обработчик
         $body.on('click', '#toPlacementShips', toPlacementShips);
     };
 
