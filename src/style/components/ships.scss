@@ -1,0 +1,242 @@
+.ships {
+    width: 40%;
+    max-width: 85vh;
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    margin: 0 5vw;
+    padding-top: 40%;
+    right: 0;
+    background: rgba(0, 0, 0, 0.53);
+    border: 2px solid #FFFFFF;
+    border-radius: 20px;
+    box-sizing: border-box;
+
+    .ship {
+        width: 48%;
+        margin: 20px auto;
+        position: relative;
+        cursor: pointer;
+        background: transparent;
+        transition: background .3s, opacity .3s, filter .3s;
+
+        &:before {
+            top: -5px;
+            left: -5px;
+            border-top: 3px solid #19d559;
+            border-left: 3px solid #19d559;
+        }
+
+        &:after {
+            bottom: -5px;
+            right: -5px;
+            border-bottom: 3px solid #19d559;
+            border-right: 3px solid #19d559;
+        }
+
+        &:before, &:after {
+            width: 0;
+            padding-top: 0;
+            content: '';
+            position: absolute;
+            transition: all .3s;
+            opacity: 0;
+            height: 0;
+        }
+
+        &:hover {
+            &:before, &:after {
+                width: 25%;
+                padding-top: 25%;
+                opacity: 1;
+            }
+        }
+
+        img {
+            width: 100%;
+        }
+
+        &.selected {
+            background: rgba(25, 213, 89, 0.24);
+
+            &:before, &:after {
+                width: 100%;
+                padding-top: 7px;
+                height: 100%;
+                padding-right: 7px;
+                opacity: 1;
+            }
+        }
+
+        &.disabled {
+            filter: grayscale(100%);
+            opacity: 0.4;
+            background: none;
+
+            &:before, &:after {
+                display: none;
+            }
+        }
+    }
+
+    .ship-4 {
+        .ship {
+            width: 50%;
+        }
+    }
+
+    .ship-2 {
+        .ship {
+            width: 36%;
+        }
+    }
+
+    .ship-1 {
+        .ship {
+            width: 42%;
+            margin: 2.3vw auto;
+        }
+    }
+
+    .ships-container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        & > div {
+            width: 25%;
+            text-align: center;
+        }
+
+        .ships-text {
+            color: white;
+            width: 100%;
+            height: auto;
+            font-size: calc(1.7vw);
+            padding: 30px 30px 0;
+        }
+    }
+}
+
+.set-ships {
+    .my-field {
+        & > div {
+            .event-cell {
+                transition: background .1s;
+            }
+
+            &:hover {
+                .event-cell {
+                    background: rgba(25,213,89,.54);
+                    cursor: pointer;
+                }
+            }
+
+            &.ship:hover, &.prohibited:hover {
+                .event-cell {
+                    background: $color-red;
+                    cursor: default;
+                }
+            }
+
+            &.no-color {
+                .event-cell {
+                    background: transparent !important;
+                }
+            }
+        }
+
+        &.vertical {
+            .size-2, .size-3, .size-4 {
+                & + * + * + * + * + * + * + * + * + * + * {
+                    .event-cell {
+                        background: rgba(25, 213, 89, .54);
+                    }
+
+                    &.prohibited, &.ship {
+                        .event-cell {
+                            background: $color-red;
+                        }
+                    }
+                }
+            }
+
+            .size-3, .size-4 {
+                & + * + * + * + * + * + * + * + * + * + * + * + * + * + * + * + * + * + * + * + * {
+                    .event-cell {
+                        background: rgba(25, 213, 89, .54);
+                    }
+
+                    &.prohibited, &.ship {
+                        .event-cell {
+                            background: $color-red;
+                        }
+                    }
+                }
+            }
+
+            .size-4 {
+                & + * + * + * + * + * + * + * + * + * + * + * + * + * + * + * + * + * + * + * + * + * + * + * + * + * + * + * + * + * + * {
+                    .event-cell {
+                        background: rgba(25, 213, 89, .54);
+                    }
+
+                    &.prohibited, &.ship {
+                        .event-cell {
+                            background: $color-red;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.horizontal {
+            .size-2, .size-3, .size-4 {
+                & + * {
+                    .event-cell {
+                        background: rgba(25, 213, 89, .54);
+                    }
+
+                    &.prohibited, &.ship {
+                        .event-cell {
+                            background: $color-red;
+                        }
+                    }
+                }
+            }
+
+            .size-3, .size-4 {
+                & + * + * {
+                    .event-cell {
+                        background: rgba(25, 213, 89, .54);
+                    }
+
+                    &.prohibited, &.ship {
+                        .event-cell {
+                            background: $color-red;
+                        }
+                    }
+                }
+            }
+
+            .size-4 {
+                & + * + * + * {
+                    .event-cell {
+                        background: rgba(25, 213, 89, .54);
+                    }
+
+                    &.prohibited, &.ship {
+                        .event-cell {
+                            background: $color-red;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
