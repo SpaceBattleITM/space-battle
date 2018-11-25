@@ -1,0 +1,10 @@
+.waiting {
+    position: relative;
+
+    img {
+        width: 5vw;
+        position: relative;
+        z-index: 2;
+        animation: bloop 1.5s linear 1.9s infinite;
+    }
+}

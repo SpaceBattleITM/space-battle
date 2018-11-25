@@ -14,10 +14,16 @@
     transform: translate(100%, 0);
     opacity: 0;
     visibility: hidden;
-    transition: transform .4s .6s, opacity .4s .6s, visibility .4s .6s;
+    transition: transform .4s, opacity .4s, visibility .4s;
 
     .placementShips & {
         @extend .to-default-state;
+        transition: transform .4s .6s, opacity .4s .6s, visibility .4s .6s;
+    }
+
+    .battle &{
+        transform: scale(1.3);
+        z-index: -1;
     }
 
     .ship {
@@ -80,6 +86,7 @@
             filter: grayscale(100%);
             opacity: 0.4;
             background: none;
+            cursor: default;
 
             &:before, &:after {
                 display: none;
@@ -106,6 +113,100 @@
         }
     }
 
+    .delay1 {
+        animation: waves 2.5s linear infinite;
+        animation-delay: .1s;
+    }
+
+    .delay2 {
+        animation: waves 2.5s linear .7s infinite;
+    }
+
+    .delay3 {
+        animation: waves 2.5s linear 1.3s infinite;
+    }
+
+    .delay4 {
+        animation: waves 2.5s linear 1.9s infinite;
+    }
+
+    .circle {
+        display: block;
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        background: #0194c7;
+        transition: 5s ease;
+        position: absolute;
+        left: 50%;
+        margin-left: -30px;
+        top: 50%;
+        margin-top: -30px;
+        transform: scale(0);
+    }
+
+    .ships-are-placed-container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transition: opacity .8s .2s, transform .8s .2s, visibility .8s .2s;
+        transform: scale(2);
+        opacity: 0;
+        visibility: hidden;
+        color: white;
+        text-align: center;
+
+        h2 {
+            font-size: calc(14px + 2vw);
+        }
+
+        .description {
+            font-size: calc(14px + 1.2vw);
+            padding: 2vw;
+        }
+
+        .timer {
+            font-size: calc(14px + 2.4vw);
+            padding: 3vw;
+            position: relative;
+
+            h2 {
+                font-size: calc(14px + 3vw);
+                animation: bloop .95s linear 1.9s;
+            }
+
+            .timer-start-battle {
+                display: block;
+                position: relative;
+                font-size: calc(14px + 5vw);
+                font-weight: bold;
+            }
+
+            .time-wrapper {
+                position: relative;
+                margin: 10vw 0;
+
+                .circle {
+                    background: $color-red;
+                }
+            }
+        }
+    }
+
+    .rival-ready {
+        display: none;
+    }
+
+    .rival-not-ready {
+        display: none;
+    }
+
     .ships-container {
         display: flex;
         flex-wrap: wrap;
@@ -115,6 +216,7 @@
         left: 0;
         right: 0;
         bottom: 0;
+        transition: opacity .8s, transform .8s, visibility .8s;
 
         & > div {
             width: 25%;
@@ -127,6 +229,20 @@
             height: auto;
             font-size: calc(1.7vw);
             padding: 2vw 2vw 0;
+        }
+    }
+
+    &.ships-are-placed {
+        .ships-container {
+            transform: scale(.4);
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .ships-are-placed-container {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
         }
     }
 }

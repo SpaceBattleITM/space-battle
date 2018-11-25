@@ -2,3 +2,5 @@
 
 //= base.js
 //= start-screen.js
+//= placement-ships.js
+//= battle.js

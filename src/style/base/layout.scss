@@ -32,19 +32,19 @@ body {
 
 
 .my-field {
-    color: $color-blue;
+    color: white;
     opacity: 0;
     visibility: hidden;
     transform: translate(-50%, 0);
     transition: transform .4s .6s, opacity .4s .6s, visibility .4s .6s;
 
-    .placementShips & {
+    .placementShips &, .battle & {
         @extend .to-default-state;
     }
 
     & > div, & {
         &:before, &:after {
-            background: $color-blue;
+            background: white;
         }
     }
 
@@ -95,15 +95,19 @@ body {
 }
 
 .enemy-field {
-    color: $color-red;
+    color: white;
     opacity: 0;
     visibility: hidden;
-    transform: translate(100%, 0);
-    transition: transform .4s, opacity .4s, visibility .4s;
+    transform: scale(0.6);
+    transition: transform .6s, opacity .6s , visibility .6s;
+
+    .battle & {
+        @extend .to-default-state;
+    }
 
     & > div, & {
         &:before, &:after {
-            background: $color-red;
+            background: white;
         }
 
         &[data-x="0"] {
