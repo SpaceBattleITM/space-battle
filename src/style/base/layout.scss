@@ -9,6 +9,7 @@ body {
     background-position: center;
     height: 100vh;
     background-repeat: no-repeat;
+    overflow: hidden;
 }
 
 * {
@@ -23,8 +24,23 @@ body {
     align-items: center;
 }
 
+.to-default-state {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, 0);
+}
+
+
 .my-field {
     color: $color-blue;
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, 0);
+    transition: transform .4s .6s, opacity .4s .6s, visibility .4s .6s;
+
+    .placementShips & {
+        @extend .to-default-state;
+    }
 
     & > div, & {
         &:before, &:after {
@@ -81,6 +97,9 @@ body {
 .enemy-field {
     color: $color-red;
     opacity: 0;
+    visibility: hidden;
+    transform: translate(100%, 0);
+    transition: transform .4s, opacity .4s, visibility .4s;
 
     & > div, & {
         &:before, &:after {
