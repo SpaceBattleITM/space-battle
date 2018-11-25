@@ -14,6 +14,22 @@
 </head>
 <body>
     <div class="game-layout">
+        <div class="start-screen">
+            <h1>Space Battle</h1>
+            <div class="share">
+                <p class="label">Поделитесь ссылкой с другом, чтобы начать игру</p>
+                <span class="link" id="game-link">https://github.com/SpaceBattleITM</span>
+                <div class="copied">Ссылка скопирована в буфер обмена</div>
+                <div class="qr">
+                    <img src="img/qr.png" alt="">
+                </div>
+            </div>
+            <div>
+                <button id="toPlacementShips">Игрок подключился*</button>
+            </div>
+        </div>
+
+
         <div class="my-field generate-field"></div>
         <div class="enemy-field generate-field active"></div>
 
@@ -21,7 +37,7 @@
             <div class="ships-container">
                 <div class="ships-text">
                     Установите корабли на игровое поле.
-                    <br>Для установки корабля по горизонтали, <br>кликните по нему правой кнопки мыши.
+                    <br>Для поворота корабля нажмите ПРОБЕЛ
                 </div>
                 <div class="ship-1">
                     <div class="ship" data-size="1"><img src="img/ship-1-1.svg" alt=""></div>

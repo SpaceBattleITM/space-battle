@@ -11,6 +11,14 @@
     border: 2px solid #FFFFFF;
     border-radius: 20px;
     box-sizing: border-box;
+    transform: translate(100%, 0);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform .4s .6s, opacity .4s .6s, visibility .4s .6s;
+
+    .placementShips & {
+        @extend .to-default-state;
+    }
 
     .ship {
         width: 48%;
@@ -118,7 +126,7 @@
             width: 100%;
             height: auto;
             font-size: calc(1.7vw);
-            padding: 30px 30px 0;
+            padding: 2vw 2vw 0;
         }
     }
 }
