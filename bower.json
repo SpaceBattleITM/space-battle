@@ -1,0 +1,23 @@
+{
+  "name": "frontendTemlate",
+  "version": "0.0.4",
+  "authors": [
+    "Kunof"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.3.1"
+  },
+  "description": "frontend",
+  "main": "",
+  "moduleType": [],
+  "homepage": "",
+  "private": false
+}
