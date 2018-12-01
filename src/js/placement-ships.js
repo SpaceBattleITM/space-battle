@@ -204,6 +204,12 @@ function placementShipsScreen() {
                         orientation = 0;
                         $('.my-field', $body).removeClass('horizontal').addClass('vertical');
                     }
+
+                    // Переопределение зарпещенных полей для активной ячейки
+                    var hoveredElements =  $('.my-field').find('.size-4, .size-3, .size-2, .size-1');
+
+                    hoveredElements.trigger('mouseout');
+                    hoveredElements.trigger('mouseover');
                 }
             }
         });
