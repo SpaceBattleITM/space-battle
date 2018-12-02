@@ -29,13 +29,13 @@
     }
 
     .my-turn {
-        transition: transform .5s .4s, opacity .5s .4s;
+        transition: transform .3s .2s, opacity .3s .2s;
     }
 
     .enemy-turn {
         transform: translate(0, -50%);
         opacity: 0;
-        transition: transform .5s, opacity .5s;
+        transition: transform .3s, opacity .3s;
     }
     
     #turn-timer {
@@ -50,13 +50,13 @@
         .my-turn {
             transform: translate(0, -50%);
             opacity: 0;
-            transition: transform .5s, opacity .5s;
+            transition: transform .3s, opacity .3s;
         }
 
         .enemy-turn {
             transform: translate(0, 0%);
             opacity: 1;
-            transition: transform .5s .4s, opacity .5s .4s;
+            transition: transform .3s .2s, opacity .3s .2s;
         }
     }
 }

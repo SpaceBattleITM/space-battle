@@ -30,7 +30,7 @@ function battleStart() {
                 } else {
                     $eventCell.addClass('missed');
                 }
-            }, 500);
+            }, 300);
             changeTurn();
         }
     };
@@ -87,7 +87,7 @@ function battleStart() {
                 }
             }
 
-        }, (1500 + generateRandom() * 20));
+        }, (1000 + generateRandom() * 10));
     };
 
     const generateRandom = function() {
