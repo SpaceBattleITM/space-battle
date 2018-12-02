@@ -4,3 +4,4 @@
 //= start-screen.js
 //= placement-ships.js
 //= battle.js
+//= final.js

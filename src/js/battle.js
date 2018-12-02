@@ -3,7 +3,7 @@ function battleStart() {
         $body = $('body');
 
     const showEnemyField = function() {
-        $body.removeClass('placementShips').addClass('battle');
+        $body.removeClass('placementShips set-ships').addClass('battle');
         startTimer(15 * 60, $('#turn-timer'), changeTurn);
 
         if (turn === 1) {
@@ -22,6 +22,11 @@ function battleStart() {
             setTimeout(function() {
                 if (arrayCell === 1) {
                     $eventCell.addClass('hit');
+                    enemyShips[index] = 5;
+
+                    if (find(enemyShips, 1) === -1) {
+                        endBattle(1);
+                    }
                 } else {
                     $eventCell.addClass('missed');
                 }
@@ -82,12 +87,21 @@ function battleStart() {
                 }
             }
 
-        }, (1500 + generateRandom() * 35));
+        }, (1500 + generateRandom() * 20));
     };
 
     const generateRandom = function() {
         return Math.floor(Math.random() * (99 + 1));
     };
+
+    function find(array, value) {
+
+        for (var i = 0; i < array.length; i++) {
+            if (array[i] === value) return i;
+        }
+
+        return -1;
+    }
 
     //Конец рандома
 
@@ -102,6 +116,11 @@ function battleStart() {
         setTimeout(function() {
             if (arrayCell === 1) {
                 $cell.find('.event-cell').addClass('hit');
+                arrayCell = 5;
+
+                if (find(myShipsPosition, 1) === -1) {
+                    endBattle(0);
+                }
             } else {
                 $cell.find('.event-cell').addClass('missed');
             }
