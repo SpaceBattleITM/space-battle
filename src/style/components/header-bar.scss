@@ -1,0 +1,62 @@
+.header-bar {
+    position: absolute;
+    color: white;
+    top: 0;
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+    width: 90vw;
+    font-size: 4vw;
+    margin-top: 1vw;
+    transform: translate(0, -50%);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform .5s, opacity .5s, visibility .5s;
+
+    .battle & {
+        transform: translate(0, 0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    & > div {
+        width: 33.3%;
+    }
+
+    .turn-timer {
+        width: 10vw;
+        font-size: 5vw;
+    }
+
+    .my-turn {
+        transition: transform .5s .4s, opacity .5s .4s;
+    }
+
+    .enemy-turn {
+        transform: translate(0, -50%);
+        opacity: 0;
+        transition: transform .5s, opacity .5s;
+    }
+    
+    #turn-timer {
+        position: relative;
+    }
+
+    &.enemy {
+        .circle {
+            background: rgba(222, 21, 99, 1);
+        }
+
+        .my-turn {
+            transform: translate(0, -50%);
+            opacity: 0;
+            transition: transform .5s, opacity .5s;
+        }
+
+        .enemy-turn {
+            transform: translate(0, 0%);
+            opacity: 1;
+            transition: transform .5s .4s, opacity .5s .4s;
+        }
+    }
+}

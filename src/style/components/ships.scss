@@ -1,11 +1,12 @@
 .ships {
     width: 40%;
-    max-width: 85vh;
+    max-width: 70vh;
     display: flex;
     flex-wrap: wrap;
     position: absolute;
     margin: 0 5vw;
-    padding-top: 40%;
+    height: 40vw;
+    max-height: 70vh;
     right: 0;
     background: rgba(0, 0, 0, 0.53);
     border: 2px solid #FFFFFF;
@@ -111,38 +112,6 @@
             width: 42%;
             margin: 2.3vw auto;
         }
-    }
-
-    .delay1 {
-        animation: waves 2.5s linear infinite;
-        animation-delay: .1s;
-    }
-
-    .delay2 {
-        animation: waves 2.5s linear .7s infinite;
-    }
-
-    .delay3 {
-        animation: waves 2.5s linear 1.3s infinite;
-    }
-
-    .delay4 {
-        animation: waves 2.5s linear 1.9s infinite;
-    }
-
-    .circle {
-        display: block;
-        height: 60px;
-        width: 60px;
-        border-radius: 50%;
-        background: #0194c7;
-        transition: 5s ease;
-        position: absolute;
-        left: 50%;
-        margin-left: -30px;
-        top: 50%;
-        margin-top: -30px;
-        transform: scale(0);
     }
 
     .ships-are-placed-container {
