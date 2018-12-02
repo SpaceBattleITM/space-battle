@@ -1,21 +1,21 @@
+var myShipsPosition = [
+    0,0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,0,
+];
+
 function placementShipsScreen() {
     var generate,
         $body = $('body'),
         orientation = 0,
         rivalReady = 0;
-
-    var myShipsPosition = [
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,
-    ];
 
     //Генерация таблиц 10х10
     const generateFields = function() {
@@ -76,7 +76,7 @@ function placementShipsScreen() {
         } else {
             $('.rival-not-ready').slideUp();
             $('.rival-ready').slideDown();
-            startTimer(10 * 60, $('.timer-start-battle'), timerCallback);
+            startTimer(5 * 60, $('.timer-start-battle'), timerCallback);
         }
     };
 
@@ -86,10 +86,6 @@ function placementShipsScreen() {
 
     const init = function() {
         generate = new generateFields();
-
-        $body.on('click', '.enemy-field.active .event-cell', function() {
-            $(this).addClass('explosion');
-        });
 
         //Выбор корабля для установки на поле
         $body.on('click', '.ships-container .ship', function() {
@@ -206,7 +202,8 @@ function placementShipsScreen() {
                     }
 
                     // Переопределение зарпещенных полей для активной ячейки
-                    var hoveredElements =  $('.my-field').find('.size-4, .size-3, .size-2, .size-1');
+                    //var hoveredElements =  $('.my-field>div', $body).hasClass('.size-4 .size-3 .size-2 .size-1');
+                    var hoveredElements =  $('.my-field>div.size-4, .my-field>div.size-3, .my-field>div.size-2', $body);
 
                     hoveredElements.trigger('mouseout');
                     hoveredElements.trigger('mouseover');

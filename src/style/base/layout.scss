@@ -125,43 +125,73 @@ body {
         .event-cell {
             cursor: pointer;
 
-            &:before, &:after {
-                content: '';
-                display: block;
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background-image: url(../img/aim.svg);
-                background-size: 80%;
-                background-position: center;
-                background-repeat: no-repeat;
-                transform: scale(0);
-                transition: transform .3s;
-                opacity: 1;
+            &:hover {
+                &:before {
+                    transform: scale(1);
+                }
             }
+        }
+    }
+}
+
+.generate-field {
+    .event-cell {
+        &:before, &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url(../img/aim.svg);
+            background-size: 80%;
+            background-position: center;
+            background-repeat: no-repeat;
+            transform: scale(0);
+            transition: transform .3s;
+            opacity: 1;
+        }
+
+        &:hover {
+            &:before {
+                transform: scale(0);
+            }
+        }
+
+        &.explosion {
+            cursor: default;
 
             &:after {
                 background-image: url(../img/explosion.svg);
                 transition: transform .7s, opacity .5s .2s;
             }
 
-            &:hover {
-                &:before {
-                    transform: scale(1);
-                }
+            &:before, &:hover:before {
+                transform: scale(0);
             }
 
-            &.explosion {
-                &:before {
-                    transform: scale(0);
-                }
+            &:after {
+                transform: scale(1.4);
+                opacity: 0;
+            }
+        }
 
-                &:after {
-                    transform: scale(1.4);
-                    opacity: 0;
-                }
+        &.hit {
+            &:before, &:hover:before {
+                background-image: url(../img/hit.svg);
+                transform: scale(1);
+                z-index: 3;
+            }
+        }
+
+        &.missed {
+            &:before, &:hover:before {
+                top: 2px;
+                left: 2px;
+                background: rgba(0,0,0,0.4) url(../img/missed.svg) center no-repeat;
+                background-size: 80%;
+                transform: scale(1);
             }
         }
     }
