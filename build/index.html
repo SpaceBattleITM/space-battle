@@ -49,7 +49,7 @@
         </div>
 
         <div class="header-bar">
-            <div class="my-turn">Твой ход</div>
+            <div class="my-turn">Твой ход <button id="you-win">END</button></div>
             <div class="turn-timer ">
                 <div class="circles">
                     <div class="circle delay1"></div>
@@ -59,7 +59,7 @@
                 </div>
                 <div id="turn-timer">00:20</div>
             </div>
-            <div class="enemy-turn">Ход противника</div>
+            <div class="enemy-turn">Ход противника <button id="you-lose">END</button></div>
         </div>
 
         <div class="my-field generate-field"></div>
@@ -123,6 +123,16 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="final-screen">
+            <div class="content">
+                <div class="title">Конец игры</div>
+                <div class="center">
+                    <div class="status" id="final-status" data-win-text="Вы победили!" data-lose-text="Вы проиграли!"></div>
+                    <div class="button" id="restart">Сыграть ещё</div>
+                </div>
+                <div class="space"></div>
             </div>
         </div>
     </div>
