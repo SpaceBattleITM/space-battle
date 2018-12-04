@@ -5,7 +5,8 @@ $(function () {
 
     const copyLink = function(e) {
         var link = $(e.currentTarget).text();
-        navigator.clipboard.writeText('Сыграй со мной в SPACE BATTLE! Вот ссылка: ' + link);
+        //navigator.clipboard.writeText('Сыграй со мной в SPACE BATTLE! Вот ссылка: ' + link);
+        navigator.clipboard.writeText(link);
 
         $(e.currentTarget).addClass('done');
 

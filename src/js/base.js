@@ -26,10 +26,7 @@ function startTimer(duration, display, callback) {
             return false;
         }
 
-        console.log(globalFunctionStop);
-
         if (globalFunctionStop === 1) {
-            console.log(globalFunctionStop);
             myStopFunction();
 
             return false;
