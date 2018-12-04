@@ -5,3 +5,4 @@
 //= placement-ships.js
 //= battle.js
 //= final.js
+//= speak.js
