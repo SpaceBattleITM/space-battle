@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Amaticsc';
+    src: url('#{$fonts-path}amaticsc/Amaticscregular.ttf');
+    src:  url('#{$fonts-path}amaticsc/Amaticscregular.woff2') format('woff2'),
+    url('#{$fonts-path}amaticsc/Amaticscregular.woff') format('woff'),
+    url('#{$fonts-path}amaticsc/Amaticscregular.ttf')  format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
