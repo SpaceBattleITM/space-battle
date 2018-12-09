@@ -6,7 +6,6 @@ var io = require('socket.io')(http);
 var port = process.env.PORT || 3000;
 
 var publicPath = path.resolve(__dirname, 'build');
-var getUserRoom = 0;
 var roomno = 1;
 
 var rooms = [];
@@ -20,6 +19,7 @@ app.get('/', function(req, res) {
 
 io.on('connection', function (socket) {
     //console.log(socket);
+    var getUserRoom = 0;
     var getRoom = socket.handshake.headers['referer'].split('room=')[1];
     if (getRoom) {
         getUserRoom = getRoom;
