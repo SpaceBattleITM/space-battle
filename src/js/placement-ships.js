@@ -71,7 +71,7 @@ function placementShipsScreen() {
 
         const waitingToStart = function() {
             if (usersReady === 0) {
-                console.log('Красава, чувак, ты ходишь второй ;)!');
+                console.log('Красава, ты ходишь первый ;)!');
                 turn = 1;
             }
             $window.trigger('shipsReady');
@@ -192,11 +192,10 @@ function placementShipsScreen() {
                             }
                         }
                     }
-                }
-
-                //Когда все корабли расставлены
-                if ($('.ships .ship').length === $('.ships .ship.disabled').length) {
-                    waitingToStart();
+                    //Когда все корабли расставлены
+                    if ($('.ships .ship').length === $('.ships .ship.disabled').length) {
+                        waitingToStart();
+                    }
                 }
             });
 
