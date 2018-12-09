@@ -1,3 +1,5 @@
+var finalFlag = 0;
+
 function endBattle(status) {
     $('body').addClass('the-end').removeClass('battle');
     globalFunctionStop = 1;
@@ -16,14 +18,5 @@ function endBattle(status) {
 $(function() {
     $('#restart').on('click', function() {
         location.reload();
-    });
-
-    //todo Обработчики для временных кнопок
-
-    $('#you-win').on('click', function() {
-        endBattle(1);
-    });
-    $('#you-lose').on('click', function() {
-        endBattle(0);
     });
 });

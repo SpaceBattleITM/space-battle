@@ -10,13 +10,15 @@ var myShipsPosition = [
     0,0,0,0,0,0,0,0,0,0,
     0,0,0,0,0,0,0,0,0,0,
 ],
-    screenInit = 0;
+    screenInit = 0,
+    turn = 0;
 
 function placementShipsScreen() {
     if (screenInit === 0) {
         screenInit = 1;
         var generate,
             $body = $('body'),
+            $window = $(window),
             orientation = 0,
             rivalReady = 0;
 
@@ -68,13 +70,22 @@ function placementShipsScreen() {
         };
 
         const waitingToStart = function() {
+            if (usersReady === 0) {
+                console.log('Красава, чувак, ты ходишь второй ;)!');
+                turn = 1;
+            }
+            $window.trigger('shipsReady');
             $('.ships').addClass('ships-are-placed');
 
             checkRival();
         };
 
+        $window.on('userReady', function() {
+            checkRival();
+        });
+
         const checkRival = function() {
-            if (rivalReady === 0) {
+            if (usersReady !== 2) {
                 $('.rival-not-ready').slideDown();
             } else {
                 $('.rival-not-ready').slideUp();
@@ -102,7 +113,6 @@ function placementShipsScreen() {
                     $body.addClass('set-ships');
                 }
             });
-
 
             //Проверка доступности полей для записи
             $body.on('mouseover', '.my-field > div', function() {
@@ -205,7 +215,6 @@ function placementShipsScreen() {
                         }
 
                         // Переопределение зарпещенных полей для активной ячейки
-                        //var hoveredElements =  $('.my-field>div', $body).hasClass('.size-4 .size-3 .size-2 .size-1');
                         var hoveredElements =  $('.my-field>div.size-4, .my-field>div.size-3, .my-field>div.size-2', $body);
 
                         hoveredElements.trigger('mouseout');
@@ -213,13 +222,6 @@ function placementShipsScreen() {
                     }
                 }
             });
-
-            //todo Удалить временный обработчик
-            $($body.on('click', '#ships-ready', waitingToStart));
-            $($body.on('click', '#player-ready', function() {
-                rivalReady = 1;
-                checkRival();
-            }));
         };
 
         return init();

@@ -22,7 +22,7 @@ function startTimer(duration, display, callback) {
         if (--timerData <= 0) {
             myStopFunction();
             display.text("00:00");
-            callback();
+            callback(-1);
             return false;
         }
 

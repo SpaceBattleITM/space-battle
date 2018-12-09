@@ -30,8 +30,9 @@ $(function () {
 
         $body.on('click', '#game-link', copyLink);
 
-        //todo Временный обработчик
-        $body.on('click', '#toPlacementShips', toPlacementShips);
+        socket.on('goToPlacementShips', function () {
+            toPlacementShips();
+        }.bind(this));
     };
 
     return init();
