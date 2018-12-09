@@ -4,13 +4,12 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var port = process.env.PORT || 3000;
+var qr = require('qr-image');
 
 var publicPath = path.resolve(__dirname, 'build');
 var roomno = 1;
 
-var rooms = [];
-
-//todo Запись комнаты в сессию
+//todo Запись комнаты в сессию*
 
 app.use(express.static(publicPath));
 app.get('/', function(req, res) {
@@ -18,7 +17,6 @@ app.get('/', function(req, res) {
 });
 
 io.on('connection', function (socket) {
-    //console.log(socket);
     var getUserRoom = 0;
     var getRoom = socket.handshake.headers['referer'].split('room=')[1];
     if (getRoom) {
@@ -29,18 +27,18 @@ io.on('connection', function (socket) {
         roomno = getUserRoom;
     } else {
         roomno = Date.now();
+
+        // QR generate
+        var svg_string = qr.imageSync(socket.handshake.headers['referer'] + '?room=' + roomno, { type: 'svg' });
+        socket.emit('qr', svg_string);
     }
 
-    //Increase roomno 2 clients are present in a room.
     if(io.nsps['/'].adapter.rooms["room-"+roomno] && io.nsps['/'].adapter.rooms["room-"+roomno].length > 1) roomno++;
     socket.join("room-"+roomno);
 
-    //Send this event to everyone in the room.
     io.sockets.in("room-"+roomno).emit('connectToRoom', "You are in room no. " + roomno);
 
     io.in("room-"+roomno).clients((err, clients) => {
-        //console.log(clients, clients.length);
-
          if (clients.length === 2) {
              io.sockets.in("room-"+roomno).emit('goToPlacementShips');
          }

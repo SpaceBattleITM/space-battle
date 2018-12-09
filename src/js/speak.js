@@ -18,6 +18,11 @@ $(function() {
         $window.trigger('userReady');
     }.bind(this));
 
+    //Получение QR кода
+    socket.on('qr', function (svg) {
+        $('.qr').html(svg);
+    }.bind(this));
+
     //Сигнал что корабли данного клиента расставлены
     $window.on('shipsReady', function() {
         socket.emit('shipsReady');
