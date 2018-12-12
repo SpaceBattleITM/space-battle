@@ -32,7 +32,10 @@
         margin-top: 25px;
         cursor: pointer;
         position: relative;
+        display: block;
         z-index: 2;
+        outline: 0;
+        border: 0;
 
         &.done {
             & + .copied {
@@ -90,5 +93,10 @@
             transform: scale(1);
             opacity: 1;
         }
+    }
+
+    #for-copy {
+        position: absolute;
+        left: -9999px;
     }
 }
