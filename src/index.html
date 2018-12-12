@@ -2,6 +2,9 @@
 <html lang="en">
 //= template/head.html
 <body>
+    <div class="loading">
+        <h1>Загрузка...</h1>
+    </div>
     <div class="game-layout">
         <div class="start-screen">
             <h1>Space Battle</h1>
@@ -9,9 +12,7 @@
                 <p class="label">Поделитесь ссылкой с другом, чтобы начать игру</p>
                 <span class="link" data-clipboard-target="#for-copy" id="game-link">https://github.com/SpaceBattleITM</span>
                 <div class="copied">Ссылка скопирована в буфер обмена</div>
-                <div class="qr">
-                    <!--<img src="img/qr.png" alt="">-->
-                </div>
+                <div class="qr"></div>
                 <input id="for-copy" type="text" value="https://github.com/SpaceBattleITM">
             </div>
             <div></div>
@@ -103,5 +104,20 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.4/socket.io.min.js"></script>
     <script src="js/main.js"></script>
+
+    <div id="sounds">
+        <audio class="cell" preload="auto">
+            <source src="sounds/check.mp3" type="audio/mp3" />
+        </audio>
+        <audio class="waiting" preload="auto" loop>
+            <source src="sounds/waiting.mp3" type="audio/mp3" />
+        </audio>
+        <audio class="timer" preload="auto" loop>
+            <source src="sounds/timer.mp3" type="audio/mp3" />
+        </audio>
+        <audio class="set" preload="auto">
+            <source src="sounds/set.wav" type="audio/wav" />
+        </audio>
+    </div>
 </body>
 </html>

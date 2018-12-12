@@ -6,10 +6,16 @@ $(function() {
 
     socket.on('connectToRoom',function(data) {
         console.log(data);
+        if (location.search.length === 0) {
+            location.search = 'room=' + data;
+        }
     });
 
     socket.on('ready', function (room) {
         $('#game-link').text(location.host + '?room=' + room);
+        $('#for-copy').val(location.host + '?room=' + room);
+
+        $('.loading').addClass('hided');
     }.bind(this));
 
     //Данные что любой член комнаты расставил корабли

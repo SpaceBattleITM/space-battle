@@ -14,13 +14,16 @@ var myShipsPosition = [
     turn = 0;
 
 function placementShipsScreen() {
+    var waiting = $('#sounds').find('audio.waiting').get(0);
+    var timer = $('#sounds').find('audio.timer').get(0);
+    //waiting.play();
+
     if (screenInit === 0) {
         screenInit = 1;
         var generate,
             $body = $('body'),
             $window = $(window),
-            orientation = 0,
-            rivalReady = 0;
+            orientation = 0;
 
         //Генерация таблиц 10х10
         const generateFields = function() {
@@ -71,7 +74,6 @@ function placementShipsScreen() {
 
         const waitingToStart = function() {
             if (usersReady === 0) {
-                console.log('Красава, ты ходишь первый ;)!');
                 turn = 1;
             }
             $window.trigger('shipsReady');
@@ -91,11 +93,14 @@ function placementShipsScreen() {
                 $('.rival-not-ready').slideUp();
                 $('.rival-ready').slideDown();
                 startTimer(5 * 60, $('.timer-start-battle'), timerCallback);
+                timer.play();
+                waiting.pause();
             }
         };
 
         const timerCallback = function() {
             battleStart();
+            timer.pause();
         };
 
         const init = function() {
@@ -114,9 +119,14 @@ function placementShipsScreen() {
                 }
             });
 
+            var check = $('#sounds').find('audio.cell').get(0);
             //Проверка доступности полей для записи
             $body.on('mouseover', '.my-field > div', function() {
                 if ($body.hasClass('set-ships')) {
+                    check.load();
+                    check.volume  = 0.1;
+                    check.play();
+
                     const size = $('.ships .selected', $body).data('size');
                     $(this).addClass('size-' + size);
 
@@ -171,6 +181,9 @@ function placementShipsScreen() {
 
                     if (flag === 0) {
                         $('.ships .selected', $body).addClass('disabled').removeClass('selected');
+
+                        var set = $('#sounds').find('audio.set').get(0);
+                        set.play();
 
                         $body.removeClass('set-ships');
 
