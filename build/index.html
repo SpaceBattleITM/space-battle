@@ -12,35 +12,18 @@
     <link rel="stylesheet" href="./css/main.css">
 
 </head>
-
-<script>
-    //В рабочем варианте клиент не должен иметь данный массив
-
-    var enemyShips =  [
-        1,0,0,0,0,0,0,0,0,1,
-        1,0,0,1,0,0,0,0,0,0,
-        1,0,0,1,0,0,0,0,0,0,
-        0,0,0,1,0,1,0,0,0,0,
-        0,0,0,0,0,1,0,0,0,0,
-        0,1,0,0,0,0,0,0,0,1,
-        0,1,0,0,1,0,0,1,0,0,
-        0,1,0,0,0,0,0,0,0,0,
-        0,1,0,1,0,0,0,0,1,1,
-        0,0,0,1,0,0,0,0,0,0,
-    ]
-</script>
-
 <body>
     <div class="game-layout">
         <div class="start-screen">
             <h1>Space Battle</h1>
             <div class="share">
                 <p class="label">Поделитесь ссылкой с другом, чтобы начать игру</p>
-                <span class="link" id="game-link">https://github.com/SpaceBattleITM</span>
+                <span class="link" data-clipboard-target="#for-copy" id="game-link">https://github.com/SpaceBattleITM</span>
                 <div class="copied">Ссылка скопирована в буфер обмена</div>
                 <div class="qr">
                     <!--<img src="img/qr.png" alt="">-->
                 </div>
+                <input id="for-copy" type="text" value="https://github.com/SpaceBattleITM">
             </div>
             <div></div>
         </div>

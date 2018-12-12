@@ -3,11 +3,9 @@ $(function () {
 
     var initGame;
 
-    const copyLink = function(e) {
-        var link = $(e.currentTarget).text();
-        //navigator.clipboard.writeText('Сыграй со мной в SPACE BATTLE! Вот ссылка: ' + link);
-        navigator.clipboard.writeText(link);
+    new ClipboardJS('#game-link');
 
+    const copyLink = function(e) {
         $(e.currentTarget).addClass('done');
 
         setTimeout(function() {

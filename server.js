@@ -27,16 +27,16 @@ io.on('connection', function (socket) {
         roomno = getUserRoom;
     } else {
         roomno = Date.now();
-
-        // QR generate
-        var svg_string = qr.imageSync(socket.handshake.headers['referer'] + '?room=' + roomno, { type: 'svg' });
-        socket.emit('qr', svg_string);
     }
+
+    // QR generate
+    var svg_string = qr.imageSync(socket.handshake.headers['referer'] + '?room=' + roomno, { type: 'svg' });
+    socket.emit('qr', svg_string);
 
     if(io.nsps['/'].adapter.rooms["room-"+roomno] && io.nsps['/'].adapter.rooms["room-"+roomno].length > 1) roomno++;
     socket.join("room-"+roomno);
 
-    io.sockets.in("room-"+roomno).emit('connectToRoom', "You are in room no. " + roomno);
+    io.sockets.in("room-"+roomno).emit('connectToRoom', roomno);
 
     io.in("room-"+roomno).clients((err, clients) => {
          if (clients.length === 2) {
