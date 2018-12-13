@@ -7,7 +7,7 @@ $(function() {
     socket.on('connectToRoom',function(data) {
         console.log(data);
         if (location.search.length === 0) {
-            location.search = 'room=' + data;
+            history.pushState(null, null, '?room=' + data);
         }
     });
 

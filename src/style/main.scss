@@ -5,6 +5,8 @@
 @import "base/typography";
 @import "base/keyframes";
 
+@import "components/loading";
+
 @import "components/field";
 @import "components/ships";
 @import "components/start-screen";
@@ -12,4 +14,3 @@
 @import "components/header-bar";
 @import "components/circle";
 @import "components/the-end";
-@import "components/loading";
