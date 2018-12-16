@@ -1,5 +1,12 @@
 $(function() {
+    var background = soundManager.createSound({
+        url: '/sounds/background.mp3',
+        onload: function() {
+            this.play();
+        }
+    });
 
+    //background.play();
 });
 
 var globalFunctionStop = 0;
