@@ -17,6 +17,6 @@ function endBattle(status) {
 
 $(function() {
     $('#restart').on('click', function() {
-        location.reload();
+        socket.emit('restart');
     });
 });

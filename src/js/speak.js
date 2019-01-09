@@ -29,6 +29,11 @@ $(function() {
         $('.qr').html(svg);
     }.bind(this));
 
+    //Рестарт
+    socket.on('restart', function () {
+        location.reload();
+    });
+
     //Сигнал что корабли данного клиента расставлены
     $window.on('shipsReady', function() {
         socket.emit('shipsReady');

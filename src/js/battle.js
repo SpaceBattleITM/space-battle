@@ -70,12 +70,16 @@ function battleStart() {
 
             if (turn === 1) {
                 turn = 0;
-                $('.header-bar').addClass('enemy');
-                $('.enemy-field').removeClass('active');
+                setTimeout(function() {
+                    $('.header-bar').addClass('enemy');
+                    $('.enemy-field').removeClass('active');
+                }, 200);
             } else {
                 turn = 1;
-                $('.header-bar').removeClass('enemy');
-                $('.enemy-field').addClass('active');
+                setTimeout(function() {
+                    $('.header-bar').removeClass('enemy');
+                    $('.enemy-field').addClass('active');
+                }, 200);
             }
         }, 30);
     };
