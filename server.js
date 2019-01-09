@@ -52,6 +52,11 @@ io.on('connection', function (socket) {
         io.sockets.in(socketRoom).emit('playerReady');
     });
 
+    socket.on('restart', function(e) {
+        var socketRoom = RoomSocket(socket)[1];
+        io.sockets.in(socketRoom).emit('restart');
+    });
+
     socket.on('shot', function(index) {
         var socketRoom = RoomSocket(socket)[1];
         io.sockets.in(socketRoom).emit('shot', index);

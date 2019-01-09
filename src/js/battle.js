@@ -20,21 +20,7 @@ function battleStart() {
         if (!$eventCell.hasClass('explosion')) {
             $eventCell.addClass('explosion');
 
-            const index = $cell.index(),
-                arrayCell = enemyShips[index];
-
-            // setTimeout(function() {
-            //     if (arrayCell === 1) {
-            //         $eventCell.addClass('hit');
-            //         enemyShips[index] = 5;
-            //
-            //         if (find(enemyShips, 1) === -1) {
-            //             endBattle(1);
-            //         }
-            //     } else {
-            //         $eventCell.addClass('missed');
-            //     }
-            // }, 300);
+            const index = $cell.index();
             socket.emit('shot', index);
         }
     };
@@ -46,61 +32,12 @@ function battleStart() {
             const $eventCell = $('.enemy-field > div').eq(index).find('.event-cell');
             if (bool === true) {
                 $eventCell.addClass('hit');
-
-                // console.log('Моих кораблей осталось: ' + find(myShipsPosition, 1));
-                //
-                // if (find(myShipsPosition, 1) === -1) {
-                //     endBattle(1);
-                // }
             } else {
                 $eventCell.addClass('missed');
             }
         }
 
     }.bind(this));
-
-    //Рандомные выстрелы противника
-
-    // var botShots = [
-    //     0,0,0,0,0,0,0,0,0,0,
-    //     0,0,0,0,0,0,0,0,0,0,
-    //     0,0,0,0,0,0,0,0,0,0,
-    //     0,0,0,0,0,0,0,0,0,0,
-    //     0,0,0,0,0,0,0,0,0,0,
-    //     0,0,0,0,0,0,0,0,0,0,
-    //     0,0,0,0,0,0,0,0,0,0,
-    //     0,0,0,0,0,0,0,0,0,0,
-    //     0,0,0,0,0,0,0,0,0,0,
-    //     0,0,0,0,0,0,0,0,0,0,
-    // ];
-
-    const artificialOpponent = function() {
-        // setTimeout(function() {
-        //     var shot = generateRandom();
-        //
-        //     if (botShots[shot] !== 1) {
-        //         botShots[shot] = 1;
-        //         shotMyField(shot);
-        //         changeTurn();
-        //     } else {
-        //         while (botShots[shot] !== 0) {
-        //             shot = generateRandom();
-        //
-        //             if (botShots[shot] !== 1) {
-        //                 shotMyField(shot);
-        //                 changeTurn();
-        //             }
-        //         }
-        //     }
-        //
-        // }, (1000 + generateRandom() * 10));
-    };
-
-    // const generateRandom = function() {
-    //     return Math.floor(Math.random() * (99 + 1));
-    // };
-
-    //Конец рандома
 
     function find(array, value) {
 
@@ -126,20 +63,23 @@ function battleStart() {
         socketTurn(index);
     }.bind(this));
 
-    const changeTurn = function(index) {
+    const changeTurn = function() {
         globalFunctionStop = 1;
         setTimeout(function() {
             startTimer(15 * 60, $('#turn-timer'), changeTurn);
 
             if (turn === 1) {
                 turn = 0;
-                $('.header-bar').addClass('enemy');
-                $('.enemy-field').removeClass('active');
-                //artificialOpponent();
+                setTimeout(function() {
+                    $('.header-bar').addClass('enemy');
+                    $('.enemy-field').removeClass('active');
+                }, 200);
             } else {
                 turn = 1;
-                $('.header-bar').removeClass('enemy');
-                $('.enemy-field').addClass('active');
+                setTimeout(function() {
+                    $('.header-bar').removeClass('enemy');
+                    $('.enemy-field').addClass('active');
+                }, 200);
             }
         }, 30);
     };
