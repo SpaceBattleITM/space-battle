@@ -1,0 +1,28 @@
+{
+  "name": "fronend",
+  "version": "1.0.0",
+  "author": "Kunof",
+  "description": "frontendTemplate",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.10.0",
+    "gulp": "^3.9.0",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-sass": "^3.0.5",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-rigger": "^0.5.8",
+    "gulp-uglify": "^1.5.1",
+    "gulp-watch": "^4.3.5",
+    "rimraf": "^2.4.4"
+  },
+  "dependencies": {
+    "app-root-path": "^2.1.0",
+    "clipboard": "^2.0.4",
+    "express": "^4.16.4",
+    "qr-image": "^3.2.0",
+    "socket.io": "^2.1.1",
+    "soundmanager2": "^2.97.20170602"
+  },
+  "main": "index.js"
+}
